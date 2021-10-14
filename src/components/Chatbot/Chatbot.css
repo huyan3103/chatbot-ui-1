@@ -1,0 +1,107 @@
+.chatbox {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.chatbox-icon {
+    width: 60px;
+    height: 60px;
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.9);
+    }
+
+    70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+    }
+
+    100% {
+        transform: scale(.9);
+        box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+    }
+}
+
+.chatbox-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.chatbox-wapper {
+    width: 338px;
+    height: 356px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f2f5;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    /* position: fixed;
+    bottom: 20px;
+    right: 20px; */
+}
+
+.chatbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    height: var(--chatbox-header-height);
+    background-color: rgb(185, 56, 56);
+    color: white;
+}
+
+.chatbox-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.chatbox-inner {
+    padding: 10px;
+    flex: 1;
+    /* max-height: calc(356px - var(--chatbox-header-height) - var(--chatbox-form-height)); */
+    height: 252px;
+    overflow-y: auto;
+}
+
+
+.chatbox-inner::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.chatbox-inner::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.chatbox-inner::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #D62929;
+}
+
+form {
+    width: 100%;
+    height: var(--chatbox-form-height);
+    display: flex;
+    /* border: none; */
+    background: white;
+    padding: 8px 16px;
+}
+
+form input {
+    border: none;
+    outline: none;
+    flex: 1;
+}
