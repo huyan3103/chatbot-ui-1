@@ -62,7 +62,6 @@ const Chatbot = () => {
       });
       const responeData = await response.json();
       data = responeData.joke;
-      console.log(responeData);
       // data = await respone.json().joke;
     } catch (ex) {
       data = "lỗi";
