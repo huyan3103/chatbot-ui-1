@@ -1,36 +1,46 @@
-import React, { useRef, useState, useEffect } from "react";
-import "boxicons";
-import "./Chatbot.css";
-import ChatbotMessage from "./ChatbotMessage";
-import chatbotIcon from "../../image/avatar_chatbot.png";
-import WaveMessage from "./WaveMessage";
+import React, { useRef, useState, useEffect } from "react"
+import "boxicons"
+import "./Chatbot.css"
+import ChatbotMessage from "./ChatbotMessage"
+import chatbotIcon from "../../image/avatar_chatbot.png"
+import WaveMessage from "./WaveMessage"
 const Chatbot = () => {
-  const [conversation, setConversation] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [enteredTextInput, setEnteredTextInput] = useState("");
-  const [isWaiting, setIsWaiting] = useState(false);
-  const chatboxInnerRef = useRef();
+  const [conversation, setConversation] = useState([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [enteredTextInput, setEnteredTextInput] = useState("")
+  const [isWaiting, setIsWaiting] = useState(false)
+  const chatboxInnerRef = useRef()
 
   useEffect(() => {
     if (chatboxInnerRef.current) {
-      chatboxInnerRef.current.scrollTop = chatboxInnerRef.current.scrollHeight;
+      chatboxInnerRef.current.scrollTop = chatboxInnerRef.current.scrollHeight
     }
-  }, [conversation]);
+  }, [conversation])
+
+  useEffect(() => {
+    fetch("https://chatbot-capstone1.herokuapp.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question: "xin chào" }),
+    })
+  })
 
   const handleOpenChatbox = () => {
-    setIsOpen(true);
-  };
+    setIsOpen(true)
+  }
 
   const handleCloseChatbox = () => {
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   const handleChangeInput = (event) => {
-    setEnteredTextInput(event.target.value);
-  };
+    !isWaiting && setEnteredTextInput(event.target.value)
+  }
 
   const handleSubmitForm = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (enteredTextInput) {
       setConversation((preState) => {
         return [
@@ -39,49 +49,53 @@ const Chatbot = () => {
             sender: "user",
             content: enteredTextInput,
           },
-        ];
+        ]
 
         // call API chatbot
-      });
-      getResponse(enteredTextInput);
+      })
+      getResponse(enteredTextInput)
     }
 
-    setEnteredTextInput("");
-  };
+    setEnteredTextInput("")
+  }
 
   const getResponse = async (input) => {
     // call API chatbot get answer
 
-    setIsWaiting(true);
-    let data = "";
-    try {
-      const response = await fetch("https://icanhazdadjoke.com", {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      const responeData = await response.json();
-      data = responeData.joke;
-      // data = await respone.json().joke;
-    } catch (ex) {
-      data = "lỗi";
-    }
+    setIsWaiting(true)
+    let answer = ""
+    console.log(1)
+    await fetch("https://chatbot-capstone1.herokuapp.com/", {
+      method: "POST",
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question: input }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        answer = data.mess
+      })
+      .catch(() => (answer = "Lỗi server"))
+
     await setConversation((pre) => [
       ...pre,
       {
         sender: "bot",
-        content: data,
+        content: answer,
       },
-    ]);
-    data = "";
-    setIsWaiting(false);
-  };
+    ])
+    answer = ""
+    setIsWaiting(false)
+  }
 
   let content = (
     <div className="chatbox-icon chatbox-btn" onClick={handleOpenChatbox}>
       <img src={chatbotIcon} alt="" />
     </div>
-  );
+  )
 
   if (isOpen) {
     content = (
@@ -135,10 +149,10 @@ const Chatbot = () => {
           </form>
         </div>
       </div>
-    );
+    )
   }
 
-  return <div className="chatbox">{content}</div>;
-};
+  return <div className="chatbox">{content}</div>
+}
 
-export default Chatbot;
+export default Chatbot
