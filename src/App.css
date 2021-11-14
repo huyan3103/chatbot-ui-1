@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+:root {
+    --chatbox-header-height: 60px;
+    --chatbox-form-height: 44px
+}
+
+body {
+    margin: 0;
+    background-image: url('./image/background-fake.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
