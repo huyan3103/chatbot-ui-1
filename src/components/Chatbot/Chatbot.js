@@ -17,6 +17,16 @@ const Chatbot = () => {
     }
   }, [conversation]);
 
+  useEffect(() => {
+    fetch("https://chatbot-capstone1.herokuapp.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question: "xin chào" }),
+    });
+  });
+
   const handleOpenChatbox = () => {
     setIsOpen(true);
   };
@@ -26,7 +36,7 @@ const Chatbot = () => {
   };
 
   const handleChangeInput = (event) => {
-    setEnteredTextInput(event.target.value);
+    !isWaiting && setEnteredTextInput(event.target.value);
   };
 
   const handleSubmitForm = (event) => {
@@ -75,7 +85,7 @@ const Chatbot = () => {
       ...pre,
       {
         sender: "bot",
-        content: data,
+        content: answer,
       },
     ]);
 

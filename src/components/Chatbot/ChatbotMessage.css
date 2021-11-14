@@ -1,70 +1,69 @@
 .chatbot-message {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    /* justify-content: flex-start; */
-
-    border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-start; */
+  border-radius: 20px;
 }
 
-.chatbot-message+.chatbot-message {
-    margin-top: 10px;
+.chatbot-message + .chatbot-message {
+  margin-top: 10px;
 }
 
 .chatbot-message-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 32px;
-    margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 32px;
+  margin: 10px 0;
 }
 
-.chatbot-message-line+.chatbot-message-line {
-    margin-top: 10px;
+.chatbot-message-line + .chatbot-message-line {
+  margin-top: 10px;
 }
 
 .chatbot-message.bot .chatbot-message-line {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .chatbot-message-line-main {
-    display: flex;
-    max-width: 70%;
-
+  display: flex;
+  max-width: 70%;
 }
 
 .chatbot-message-line-main img {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 .chatbot-message-line span {
-    display: block;
-    font-size: 15px;
-    padding: 7px 12px 8px;
+  display: block;
+  font-size: 15px;
+  padding: 7px 12px 8px;
 }
 
 .chatbot-message-line span:first-child {
-    flex: 1;
+  flex: 1;
 }
 
 .chatbot-message-content {
-    border: 1px solid;
-    border-radius: 20px;
-    display: block;
-    word-wrap: break-word;
+  border: 1px solid;
+  border-radius: 20px;
+  display: block;
+  word-wrap: break-word;
+  background-color: white;
 }
 
 .chatbot-message.bot .chatbot-message-content {
-    border: 1px solid #ccc;
+  border: 1px solid #ccc;
 }
 
 .chatbot-message.user .chatbot-message-content {
-    background-color: #d82c2c;
-    /* border: 1px solid #d82c2c; */
-    border: none;
-    color: white;
+  background-color: #d82c2c;
+  /* border: 1px solid #d82c2c; */
+  border: none;
+  color: white;
 }
