@@ -55,17 +55,22 @@ const Chatbot = () => {
     setIsWaiting(true);
     let data = "";
     try {
-      const response = await fetch("https://icanhazdadjoke.com", {
-        headers: {
-          Accept: "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://capstone1-chatbotv1.herokuapp.com/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question: input }),
+        }
+      );
       const responeData = await response.json();
-      data = responeData.joke;
-      // data = await respone.json().joke;
+      data = responeData.mess;
     } catch (ex) {
       data = "lỗi";
     }
+
     await setConversation((pre) => [
       ...pre,
       {
@@ -73,6 +78,7 @@ const Chatbot = () => {
         content: data,
       },
     ]);
+
     data = "";
     setIsWaiting(false);
   };
@@ -121,11 +127,6 @@ const Chatbot = () => {
               type="submit"
               onClick={handleSubmitForm}
             >
-              {/* <box-icon
-        name="send"
-        color={`${enteredTextInput && "#d82c2c"}`}
-      ></box-icon> */}
-
               <box-icon
                 type="solid"
                 name="send"
