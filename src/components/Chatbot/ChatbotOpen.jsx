@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import ChatbotMessage from "./ChatbotMessage";
 import WaveMessage from "./WaveMessage";
-import useGetAnswer from "../hooks/use-getAnswer";
+import useGetAnswer from "../../hooks/use-getAnswer";
 import "./ChatbotOpen.css";
 
 const ChatbotOpen = (props) => {
