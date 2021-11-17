@@ -85,7 +85,7 @@ const Chatbot = () => {
       ...pre,
       {
         sender: "bot",
-        content: answer,
+        content: data,
       },
     ]);
 
