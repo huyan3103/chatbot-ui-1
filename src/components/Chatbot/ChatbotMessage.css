@@ -2,7 +2,6 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  /* justify-content: flex-start; */
   border-radius: 20px;
 }
 
@@ -41,7 +40,6 @@
 
 .chatbot-message-line span {
   display: block;
-  height: 100%;
   font-size: 15px;
   padding: 7px 12px 8px;
 }
