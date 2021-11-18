@@ -1,18 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import chatbotIcon from "../../image/avatar_chatbot.png";
-
 import "./ChatbotMessage.css";
 
 const ChatbotMessage = (props) => {
+  //Tách câu dài thành các câu nhỏ rồi in ra
+
   const message = props.children;
   let content = "";
   if (typeof message === "string") {
-    content = message.split("\n").map((item, index) => (
-      <span className="chatbot-message-content" key={index}>
-        {item}
-      </span>
-    ));
+    if (props.sender === "bot") {
+      content = message.split(".").map(
+        (item, index) =>
+          item !== "" && (
+            <span className="chatbot-message-content" key={index}>
+              {item}
+            </span>
+          )
+      );
+    } else {
+      content = <span className="chatbot-message-content">{message}</span>;
+    }
   } else {
     content = message;
   }

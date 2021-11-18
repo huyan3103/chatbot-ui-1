@@ -1,6 +1,1 @@
-POST https://chatbot-capstone1.herokuapp.com/
-Content-Type: application/json
-
-{
-    "question": "xin chào"
-}
+GET https://chatbot-capstone1.herokuapp.com/train
