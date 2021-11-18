@@ -31,8 +31,8 @@
   
   .chatbox-wapper {
     display: flex;
-    width: 338px;
-    height: 60vh;
+    width: 400px;
+    height: 80vh;
     flex-direction: column;
     background-color: #f0f2f5;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -60,7 +60,11 @@
     background-color: transparent;
     cursor: pointer;
     color: white;
-    margin: 5px;
+    /* margin: 5px; */
+  }
+
+  .chatbox-btn ~ .chatbox-btn {
+    margin-left: 5px;
   }
   
   .chatbox-inner {

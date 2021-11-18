@@ -6,7 +6,12 @@ import "./ChatbotOpen.css";
 
 const ChatbotOpen = (props) => {
   const { setIsOpen } = props;
-  const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState(() => {
+    const saved = localStorage.getItem("conversation");
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
+
   const [enteredTextInput, setEnteredTextInput] = useState("");
 
   const addMessageToConversation = (message) => {
@@ -29,6 +34,8 @@ const ChatbotOpen = (props) => {
     if (chatboxInnerRef.current) {
       chatboxInnerRef.current.scrollTop = chatboxInnerRef.current.scrollHeight;
     }
+
+    localStorage.setItem("conversation", JSON.stringify(conversation));
   }, [conversation]);
 
   // useEffect(() => {
@@ -73,6 +80,7 @@ const ChatbotOpen = (props) => {
           },
         ];
       });
+
       // getResponse(enteredTextInput);
       sendRequest(enteredTextInput);
     }
@@ -102,6 +110,7 @@ const ChatbotOpen = (props) => {
   //     );
   //   setIsWaiting(false);
   // };
+
   return (
     <div className="chatbox-wapper">
       <div className="chatbox-header">
@@ -137,6 +146,7 @@ const ChatbotOpen = (props) => {
             onChange={handleChangeInput}
             value={enteredTextInput}
           />
+
           <button
             className={`chatbox-btn ${enteredTextInput && "active"}`}
             type="submit"

@@ -14,8 +14,9 @@
 }
 
 .chatbox.zoom .chatbox-wapper {
-  width: 450px;
-  height: 65vh;
+  width: 600px;
+  max-width: 90vw;
+  height: 80vh;
 }
 
 .overlay {
@@ -31,3 +32,4 @@
 .overlay.active {
   background: rgba(255, 255, 255, 0.6);
 }
+
