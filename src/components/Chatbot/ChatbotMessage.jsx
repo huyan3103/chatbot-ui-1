@@ -10,9 +10,9 @@ const ChatbotMessage = (props) => {
   let content = "";
   if (typeof message === "string") {
     if (props.sender === "bot") {
-      content = message.split(".").map(
+      content = message.split(/(\.\s)/).map(
         (item, index) =>
-          item !== "" && (
+          item !== ". " && (
             <span className="chatbot-message-content" key={index}>
               {item}
             </span>
